@@ -34,8 +34,13 @@ async function fetchStockData(symbol: string) {
     try {
         console.log(`Fetching data for ${symbol}...`);
         
-        // Using Alpha Vantage free API (you'll need to get a free API key)
-        const apiKey = 'demo'; // Replace with your API key from alphavantage.co
+        // Using Alpha Vantage free API
+        const apiKey = import.meta.env.VITE_ALPHA_VANTAGE_API_KEY;
+        
+        if (!apiKey) {
+            throw new Error('API key not found. Please set VITE_ALPHA_VANTAGE_API_KEY in your .env file');
+        }
+        
         const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
         
         const response = await fetch(url);
