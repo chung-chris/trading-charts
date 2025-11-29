@@ -16,7 +16,34 @@
             width: 100%;
             height: 600px;
             margin-top: 20px;
+            position: relative;
         }
+        #tooltip {
+            position: absolute;
+            display: none;
+            padding: 8px 12px;
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid #363C4E;
+            border-radius: 4px;
+            color: #d1d4dc;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        #tooltip div {
+            margin: 2px 0;
+            white-space: nowrap;
+        }
+        .tooltip-label {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tooltip-price { color: #800080; }
+        .tooltip-ema { color: #2962FF; }
+        .tooltip-buy { color: #26a69a; }
+        .tooltip-sell { color: #ef5350; }
         #controls {
             margin-bottom: 20px;
         }
@@ -35,11 +62,10 @@
     </style>
 </head>
 <body>
-    <h1>My Trading Chart App</h1>
-    <div id="controls">
-        <button id="load-chart">Load AAPL Chart</button>
+    <h1 id="chart-title">Trading Chart</h1>
+    <div id="chart-container">
+        <div id="tooltip"></div>
     </div>
-    <div id="chart-container"></div>
     <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
